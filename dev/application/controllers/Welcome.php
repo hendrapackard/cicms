@@ -38,7 +38,7 @@ class Welcome extends Frontend_Controller {
 
 //        $this->User_model->delete(2);
 
-        echo base_url();
-		$this->load->view('welcome_message');
+//        echo base_url();
+		$this->site->view('index');
 	}
 }
