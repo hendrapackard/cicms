@@ -97,7 +97,7 @@ switch (ENVIRONMENT)
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
  */
-	$system_path = 'system';
+	$system_path = 'dev/system';
 
 /*
  *---------------------------------------------------------------
@@ -114,7 +114,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$application_folder = 'application';
+	$application_folder = 'dev/application';
 
 /*
  *---------------------------------------------------------------
@@ -129,7 +129,7 @@ switch (ENVIRONMENT)
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = '';
+	$view_folder = 'templates';
 
 
 /*
@@ -178,7 +178,10 @@ switch (ENVIRONMENT)
  */
 	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
-
+//digunakan untuk mengambil isian configuration.php
+if (require_once('configuration.php') ){
+    $SConfig = new SConfig;
+}
 
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
