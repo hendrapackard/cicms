@@ -1,0 +1,11 @@
+<?php
+defined('BASEPATH')  OR exit('No direct script access allowed'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard Admin</title>
+
+    <link rel="stylesheet" type="text/css" href="<?= get_template_directory(dirname(__FILE__),'css/styles.css'); ?>" media="screen" />
+</head>
+<body>

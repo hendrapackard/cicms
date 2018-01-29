@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller{
     {
         parent::__construct();
 
-        $this->load->helper(array());
+        $this->load->helper(array('template_helper'));
         $this->load->library(array('Site'));
         $this->load->model(array());
     }

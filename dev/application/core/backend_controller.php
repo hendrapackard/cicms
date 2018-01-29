@@ -11,7 +11,7 @@ class Backend_Controller extends MY_Controller{
         $this->load->model(array());
 
         $this->site->side = 'backend';
-        $this->site->template = 'blue';
+        $this->site->template = 'default';
 
     }
 }
