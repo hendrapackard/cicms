@@ -36,8 +36,9 @@ class Welcome extends Frontend_Controller {
 
         $this->User_model->update($data, array('ID' => 2));*/
 
-        $this->User_model->delete(2);
+//        $this->User_model->delete(2);
 
+        echo base_url();
 		$this->load->view('welcome_message');
 	}
 }
