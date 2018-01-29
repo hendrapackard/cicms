@@ -20,6 +20,24 @@ class Welcome extends Frontend_Controller {
 	 */
 	public function index()
 	{
+	    /*$data = array(
+	        'username' => 'admin',
+	        'password' => 'admin',
+            'group' => 'admin',
+            'email' => 'admin@gmail.com'
+        );
+
+	    $id = $this->User_model->insert($data);
+	    echo $id;*/
+
+        /*$data = array(
+            'group' => 'user',
+        );
+
+        $this->User_model->update($data, array('ID' => 2));*/
+
+        $this->User_model->delete(2);
+
 		$this->load->view('welcome_message');
 	}
 }

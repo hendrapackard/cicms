@@ -5,7 +5,7 @@ class MY_Model extends CI_Model{
     protected $_table_name;
     protected $_order_by;
     protected $_order_by_type;
-    protected $_primary_filter = 'intaval';
+    protected $_primary_filter = 'intval';
     protected $_primary_key;
     protected $_type;
     public $rules;
@@ -97,6 +97,8 @@ class MY_Model extends CI_Model{
         }
 
         $this->db->where($this->_primary_key,$id);
+        $this->db->limit(1);
+        $this->db->delete('{PRE}'.$this->_table_name);
     }
 
     //Untuk menghapus data berdasarkan array
