@@ -44,6 +44,8 @@ var host = window.location.hostname;
 
         });
 
+        $(window).trigger('hashchange');
+
         $('#myModal').on('hidden',function () {
             window.history.pushState(null,null,path);
             $('#myModal').removeClass('big-modal');
@@ -52,8 +54,37 @@ var host = window.location.hostname;
             $('#myModal form').show();
         });
 
-        $(window).trigger('hashchange');
+        /* ************************************** */
+        /*        BACKEND BAGIAN ARTIKEL          */
+        /* ************************************** */
 
+        $(document).on('click','#submit-artikel',function (eve) {
+            eve.preventDefault();
+
+            var action = $('#form-artikel').attr('action');
+            var datatosend = $('#form-artikel').serialize();
+
+            $.ajax('http://'+host+path+'/action/'+action,{
+                dataType : 'json',
+                type : 'POST',
+                data : datatosend,
+                success : function (data) {
+                    if (data.status == 'success') {
+                        $('#myModal').modal('hide');
+                        $('div.widget-content').prepend(
+                            '<div class="control-group"><div class="alert alert-info">'+
+                            '<button type="button" class="close" data-dismiss="alert">&times;</button>'+
+                            '<strong>Berhasil!</strong> Artikel telah diperbaharui...</div></div>'
+                        );
+                    }
+                    else {
+                        $.each(data.errors,function (key,value){
+                            $('#'+key).attr('placeholder',value);
+                        })
+                    }
+                }
+            });
+        })
     });
 
     var lineChartData = {

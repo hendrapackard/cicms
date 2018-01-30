@@ -17,4 +17,14 @@ function bCrypt($pass,$cost){
     return crypt($pass,$salt);
 }
 
+function get_user_info($param = null){
+    $_this =& get_instance();
+    if ($param != null){
+        return $_this->session->userdata($param);
+    }
+    else{
+        return $_this->session->userdata();
+    }
+}
+
 ?>
