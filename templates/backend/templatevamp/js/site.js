@@ -84,10 +84,47 @@ var host = window.location.hostname;
                     }
                 }
             });
-        })
+        });
+
+        ambil_artikel(null,false);
     });
 
-    var lineChartData = {
+        /* ************************************** */
+        /*        ANEKA JAVASCRIPT FUNCTION       */
+        /* ************************************** */
+
+        function ambil_artikel(page_active, scrolltop) {
+            if($('table#tbl-artikel').length > 0){
+                // alert('ada tablenya');
+            $.ajax('http://'+host+path+'/action/ambil',{
+                dataType : 'json',
+                type : 'POST',
+                success : function (data) {
+                    $('table#tbl-artikel tbody tr').remove();
+                    $.each(data.record,function (index, element) {
+                        $('table#tbl-artikel').find('tbody').append(
+                            '<tr>'+
+                            '  <td width="2%"><input type="checkbox" name="post_id[]" value="'+element.post_ID+'"></td>'+
+                            '  <td width="50%"><a class="link-edit" href="artikel#edit?id='+element.post_ID+'">'+element.post_title+'</a> <strong></strong></td>'+
+                            '  <td width="10%"><i class="icon-comment-alt"></i> <span class="value">'+element.comment_count+'</span></td>'+
+                            '  <td width="10%"><i class="icon-eye-open"></i> <span class="value">'+element.post_counter+'</span></td>'+
+                            '  <td width="12%"><i class="icon-time"></i> <span class="value"></span></td>'+
+                            '  <td width="16%" class="td-actions">'+
+                            '    <a href="artikel#edit?id='+element.post_ID+'" class="link-edit btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i> Edit</a>'+
+                            '    <a href="artikel#hapus?id='+element.post_ID+'" class="btn btn-invert btn-small btn-info"><i class="btn-icon-only icon-remove" id="hapus_1"></i> Hapus</a>'+
+                            '  </td>'+
+                            '</tr>'
+                        )
+                    });
+
+
+                    }
+                });
+            }
+        }
+
+
+var lineChartData = {
         labels: ["23", "25", "25", "26", "27"],
         datasets: [
             {

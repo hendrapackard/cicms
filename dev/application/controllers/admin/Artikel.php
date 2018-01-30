@@ -17,6 +17,7 @@ class Artikel extends Backend_Controller{
 
     public function action($param)
     {
+        global $SConfig;
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){
             if ($param == 'tambah'){
                 $rules = $this->Artikel_model->rules;
@@ -45,6 +46,21 @@ class Artikel extends Backend_Controller{
 
                 echo json_encode($result);
             }
+
+        elseif ($param == 'ambil'){
+            $total_rows = $this->Artikel_model->count();
+            $offset = null;
+
+            $record = $this->Artikel_model->get_by(null,$SConfig->_backend_perpage,$offset);
+
+            echo json_encode(
+                array(
+                        'total_rows' => $total_rows,
+                        'perpage' => $SConfig->_backend_perpage,
+                        'record' => $record
+                )
+            );
         }
+    }
     }
 }

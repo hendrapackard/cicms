@@ -10,7 +10,7 @@
         var $_database_password = "123456";
         var $_table_prefix = "tbl_";
         var $_cms_name = "Berbagi Ilmu Website";
-        var $_backend_perpage = 10;
+        var $_backend_perpage = 5;
         var $_frontend_perpage = 5;
     }
 
