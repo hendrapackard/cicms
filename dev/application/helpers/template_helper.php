@@ -14,4 +14,39 @@
         return $_this->site->view($view);
     }
 
+    function set_url($sub){
+        $_this =& get_instance();
+        if ($_this->site->side == 'backend'){
+            return site_url('admin/'.$sub);
+        }
+    }
+
+    function is_active_page_print($page,$class){
+        $_this =& get_instance();
+        if ($_this->site->side == 'backend' && $page == $_this->uri->segment(2)){
+            return $class;
+        }
+    }
+
+    function title(){
+        $_this =& get_instance();
+        global $SConfig;
+
+        $array_backend_page = array(
+            'dashboard' => 'Dashboard',
+            'artikel' => 'Daftar Artikel',
+            'halaman' => 'Daftar Halaman',
+            'produk' => 'Daftar Produk',
+            'komentar' => 'Daftar Komentar',
+            'statistik' => 'Statistik',
+            'tampilan' => 'Tampilan',
+            'konfigurasi' => 'Konfigurasi',
+            'user' => 'Daftar User',
+        );
+
+        $title = NULL;
+        if ($_this->site->side == 'backend' && (array_key_exists($_this->uri->segment(2), $array_backend_page)))
+            return $array_backend_page[$_this->uri->segment(2)].' | '.$SConfig->_cms_name;
+    }
+
 ?>
