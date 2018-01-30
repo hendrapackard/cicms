@@ -13,5 +13,7 @@ class Backend_Controller extends MY_Controller{
         $this->site->side = 'backend';
         $this->site->template = 'templatevamp';
 
+        $this->site->is_logged_in();
+
     }
 }
