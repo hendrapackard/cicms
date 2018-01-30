@@ -83,7 +83,7 @@ class MY_Model extends CI_Model{
             $this->db->limit($limit);
         }
 
-        return $this->db->get(NULL,$single);
+        return $this->get(NULL,$single);
     }
 
     //Untuk menghapus data
