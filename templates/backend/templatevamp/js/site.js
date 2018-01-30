@@ -6,23 +6,50 @@ var host = window.location.hostname;
             var hash = $.param.fragment();
 
             if (hash == 'tambah'){
+                if(path.search('admin/artikel') > 0){
+                    $('#myModal .modal-header #myModalLabel').text('Tambah Artikel');
+                    $('#myModal .modal-footer #submit-artikel').text('Tambah');
+                    $('#myModal #form-artikel').attr('action','tambah');
+                }
+
+                $('#myModal').addClass('big-modal');
+                $('#myModal').modal('show');
             }
 
-            else if(hash == 'edit'){
+            else if(hash.search('edit') == 0){
+
+                if(path.search('admin/artikel') > 0){
+                    $('#myModal .modal-header #myModalLabel').text('Edit Artikel');
+                    $('#myModal .modal-footer #submit-artikel').text('Update!');
+                    $('#myModal #form-artikel').attr('action','update');
+                }
+
+                $('#myModal').addClass('big-modal');
+                $('#myModal').modal('show');
             }
 
-            else if(hash == 'hapus'){
+            else if(hash.search('hapus') == 0){
+
+                if(path.search('admin/artikel') > 0){
+                    $('#myModal form').hide();
+                    $('#myModal .modal-header #myModalLabel').text('Hapus Artikel');
+                    $('#myModal .modal-footer #submit-artikel').text('Hapus!');
+                    $('#myModal #form-artikel').attr('action','hapus');
+                    $('#myModal .modal-body').prepend('<p id="hapus-notif">Apakah Anda yakin akan menghapus : Artikel ... ???</p>');
+                }
+
+                $('#myModal').modal('show');
             }
 
-            else if(hash == 'ambil'){
-            }
 
-            else if(hash == 'mass'){
-            }
         });
 
         $('#myModal').on('hidden',function () {
             window.history.pushState(null,null,path);
+            $('#myModal').removeClass('big-modal');
+            $('#myModal #hapus-notif').remove();
+            $('#myModal form').find("input[type=text],textarea").val(""); //untuk menetralkan inputan
+            $('#myModal form').show();
         });
 
         $(window).trigger('hashchange');
