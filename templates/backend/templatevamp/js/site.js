@@ -17,11 +17,15 @@ $(function () {
         }
 
         else if(hash.search('edit') == 0){
-
             if(path.search('admin/artikel') > 0){
+                var post_ID = getUrlVars()['id'];
+                var artikel_detail = getJSON('http://'+host+path+'/action/ambil',{id:post_ID});
+                $('#myModal .modal-body #post_title').val(artikel_detail.data['post_title']);
+                $('#myModal .modal-body #post_content').val(artikel_detail.data['post_content']);
                 $('#myModal .modal-header #myModalLabel').text('Edit Artikel');
                 $('#myModal .modal-footer #submit-artikel').text('Update!');
                 $('#myModal #form-artikel').attr('action','update');
+                $('#myModal #form-artikel #post_id').val(post_ID);
             }
 
             $('#myModal').addClass('big-modal');
@@ -160,6 +164,20 @@ function ambil_artikel(hal_aktif, scrolltop) {
 
         });
     }
+}
+
+function getJSON(url,data){
+    return JSON.parse($.ajax({
+        type : 'POST',
+        url : url,
+        data : data,
+        dataType:'json',
+        global:false,
+        async: false,
+        success:function(msg){
+
+        }
+    }).responseText);
 }
 
 function getUrlVars() {
