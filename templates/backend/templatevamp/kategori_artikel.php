@@ -16,20 +16,6 @@
             <!-- /widget-content -->
             <div class="widget-content" id="list-kategori">
 
-              <ul class="list-group hirarki kategori">
-                  <li id="ID_9" class="list-group-item "><a class="link-edit" href="kategori#edit?id=9">Bisnis</a>
-                      <div class="pull-right"><a href="kategori#edit?id=9" class="link-edit btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i> Edit</a> <a href="kategori#hapus?id=9" id="hapus_" class="btn btn-invert btn-small"><i class="btn-icon-only icon-remove"></i> Hapus</a></div>
-                  </li>
-                  <li id="ID_2" class="list-group-item li-parent"><a class="link-edit" href="kategori#edit?id=2">Desain</a>
-                      <div class="pull-right"><a href="kategori#edit?id=2" class="link-edit btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i> Edit</a> <a href="kategori#hapus?id=2" id="hapus_" class="btn btn-invert btn-small"><i class="btn-icon-only icon-remove"></i> Hapus</a></div>
-                      <ul class="list-group hirarki kategori">
-                          <li id="ID_8" class="list-group-item"><a class="link-edit" href="kategori#edit?id=8">Coloring</a>
-                              <div class="pull-right"><a href="kategori#edit?id=8" class="link-edit btn btn-small btn-info"><i class="btn-icon-only icon-pencil"></i> Edit</a> <a href="kategori#hapus?id=8" id="hapus_" class="btn btn-invert btn-small"><i class="btn-icon-only icon-remove"></i> Hapus</a></div>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
-
             </div>
             <!-- /widget-content --> 
           </div>

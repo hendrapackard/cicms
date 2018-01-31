@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Model extends CI_Model{
     protected $_table_name;
     protected $_order_by;
-    protected $_order_by_type;
+    protected $_order_by_type ='ASC';
     protected $_primary_filter = 'intval';
     protected $_primary_key;
     protected $_type;
