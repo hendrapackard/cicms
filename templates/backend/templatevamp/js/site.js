@@ -35,11 +35,14 @@ $(function () {
         else if(hash.search('hapus') == 0){
 
             if(path.search('admin/artikel') > 0){
+                var post_ID = getUrlVars()['id'];
+                var artikel_detail = getJSON('http://'+host+path+'/action/ambil',{id: post_ID});
                 $('#myModal form').hide();
                 $('#myModal .modal-header #myModalLabel').text('Hapus Artikel');
                 $('#myModal .modal-footer #submit-artikel').text('Hapus!');
                 $('#myModal #form-artikel').attr('action','hapus');
-                $('#myModal .modal-body').prepend('<p id="hapus-notif">Apakah Anda yakin akan menghapus : Artikel ... ???</p>');
+                $('#myModal .modal-body').prepend('<p id="hapus-notif">Apakah Anda yakin akan menghapus : Artikel <b>'+artikel_detail.data['post_title']+'</b> ???</p>');
+                $('#myModal #form-artikel #post_id').val(post_ID);
             }
 
             $('#myModal').modal('show');

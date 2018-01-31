@@ -83,7 +83,16 @@ class Artikel extends Backend_Controller{
                     }
                     
                 }
+                
+                elseif($param == 'hapus'){
+                    $post = $this->input->post(null,true);
+                    if(!empty($post['post_id'])){
+                        $this->Artikel_model->delete($post['post_id']);
+                        $result = array('status' => 'success');
+                    }
+                    
+                    echo json_encode($result);
+                }
             }
         }
-        
     }
