@@ -18,8 +18,8 @@ class Site{
         $data ?
             $_this->load->view($this->side.'/'.$this->template.'/'.$pages,$data)
             //backend/blue/index
-                :
-                    $_this->load->view($this->side.'/'.$this->template.'/'.$pages);
+            :
+            $_this->load->view($this->side.'/'.$this->template.'/'.$pages);
     }
 
     function is_logged_in(){

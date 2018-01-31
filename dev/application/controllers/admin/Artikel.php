@@ -47,26 +47,26 @@ class Artikel extends Backend_Controller{
                 echo json_encode($result);
             }
 
-        elseif ($param == 'ambil'){
-            $post = $this->input->post(null,true);
-            $total_rows = $this->Artikel_model->count();
-            $offset = null;
+            elseif ($param == 'ambil'){
+                $post = $this->input->post(null,true);
+                $total_rows = $this->Artikel_model->count();
+                $offset = null;
 
-            if (!empty($post['hal_aktif']) && $post['hal_aktif'] > 1){
-                $offset = ($post['hal_aktif'] - 1) * $SConfig->_backend_perpage;
-            }
+                if (!empty($post['hal_aktif']) && $post['hal_aktif'] > 1){
+                    $offset = ($post['hal_aktif'] - 1) * $SConfig->_backend_perpage;
+                }
 
-            $record = $this->Artikel_model->get_by(null,$SConfig->_backend_perpage,$offset);
+                $record = $this->Artikel_model->get_by(null,$SConfig->_backend_perpage,$offset);
 
-            echo json_encode(
-                array(
+                echo json_encode(
+                    array(
                         'total_rows' => $total_rows,
                         'perpage' => $SConfig->_backend_perpage,
                         'record' => $record
-                )
+                    )
 
-             );
-         }
+                );
+            }
         }
     }
 
