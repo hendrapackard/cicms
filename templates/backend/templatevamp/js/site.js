@@ -6,7 +6,13 @@ $(function () {
         var hash = $.param.fragment();
 
         if (hash == 'tambah'){
-            if(path.search('admin/artikel') > 0){
+            if(path.search('admin/artikel/kategori') > 0){
+                $('#myModal .modal-header #myModalLabel').text('Tambah Kategori Artikel');
+                $('#myModal .modal-footer #submit-kategori-artikel').text('Tambah!');
+                $('#myModal #form-kategori-artikel').attr('action','tambah');
+            }
+
+            else if(path.search('admin/artikel') > 0){
                 $('#myModal .modal-header #myModalLabel').text('Tambah Artikel');
                 $('#myModal .modal-footer #submit-artikel').text('Tambah!');
                 $('#myModal #form-artikel').attr('action','tambah');
@@ -17,7 +23,13 @@ $(function () {
         }
 
         else if(hash.search('edit') == 0){
-            if(path.search('admin/artikel') > 0){
+
+            if(path.search('admin/artikel/kategori') > 0){
+                $('#myModal .modal-header #myModalLabel').text('Edit Artikel');
+                $('#myModal .modal-footer #submit-kategori-artikel').text('Update!');
+                $('#myModal #form-kategori-artikel').attr('action','update');
+            }
+            else if(path.search('admin/artikel') > 0){
                 var post_ID = getUrlVars()['id'];
                 var artikel_detail = getJSON('http://'+host+path+'/action/ambil',{id:post_ID});
                 $('#myModal .modal-body #post_title').val(artikel_detail.data['post_title']);
@@ -33,8 +45,14 @@ $(function () {
         }
 
         else if(hash.search('hapus') == 0){
+            if(path.search('admin/artikel/kategori') > 0){
+                $('#myModal form').hide();
+                $('#myModal #form-kategori-artikel').attr('action','hapus');
+                $('#myModal .modal-header #myModalLabel').text('Hapus Kategori Artikel');
+                $('#myModal .modal-footer #submit-kategori-artikel').text('Ya Hapus Saja!');
+            }
 
-            if(path.search('admin/artikel') > 0){
+            else if(path.search('admin/artikel') > 0){
                 var post_ID = getUrlVars()['id'];
                 var artikel_detail = getJSON('http://'+host+path+'/action/ambil',{id: post_ID});
                 $('#myModal form').hide();
@@ -110,6 +128,15 @@ $(function () {
     });
 
     ambil_artikel(null,false);
+
+    /* ************************************** */
+  /* Kategori DRAG DROP SORT */
+  /* ************************************** */
+  $('#list-kategori .list-group').sortable({
+    opacity: 0.5,
+    cursor: 'move',
+    placeholder: 'ui-state-highlight'
+  }); 
 
 
 });
@@ -207,6 +234,6 @@ var lineChartData = {
             data: [2700, 2700, 2900, 2600, 2900]
         }
     ]
-};
+}
 
 var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
