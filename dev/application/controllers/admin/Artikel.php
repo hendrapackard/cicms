@@ -18,7 +18,7 @@ class Artikel extends Backend_Controller{
     public function action($param)
     {
         global $SConfig;
-        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){
+        if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
             if ($param == 'tambah'){
                 $rules = $this->Artikel_model->rules;
                 $this->form_validation->set_rules($rules);
@@ -48,8 +48,13 @@ class Artikel extends Backend_Controller{
             }
 
         elseif ($param == 'ambil'){
+            $post = $this->input->post(null,true);
             $total_rows = $this->Artikel_model->count();
             $offset = null;
+
+            if (!empty($post['hal_aktif']) && $post['hal_aktif'] > 1){
+                $offset = ($post['hal_aktif'] - 1) * $SConfig->_backend_perpage;
+            }
 
             $record = $this->Artikel_model->get_by(null,$SConfig->_backend_perpage,$offset);
 
@@ -59,8 +64,10 @@ class Artikel extends Backend_Controller{
                         'perpage' => $SConfig->_backend_perpage,
                         'record' => $record
                 )
-            );
+
+             );
+         }
         }
     }
-    }
+
 }

@@ -33,7 +33,7 @@
                    </li>
                 </ul>
                 <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Pencarian">
+                    <input type="text" class="search-query" placeholder="Pencarian...">
                 </form>
             </div>
             <!--/.nav-collapse -->
@@ -50,7 +50,7 @@
                 <li class="<?=is_active_page_print('dashboard','active');?>"><a href="<?=set_url('dashboard');?>"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
                 <li class="dropdown <?=is_active_page_print('artikel','active');?>"><a href="<?=set_url('artikel/index');?>" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file"></i><span>Artikel</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?=set_url('artikel/');?>">Daftar Artikel</a></li>
+                        <li><a href="<?=set_url('artikel');?>">Daftar Artikel</a></li>
                         <li><a href="<?=set_url('artikel#tambah');?>">Tambah Artikel</a></li>
                         <li><a href="<?=set_url('artikel/kategori');?>">Kategori</a></li>
                     </ul>
